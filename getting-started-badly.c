@@ -1,4 +1,6 @@
-void main() {
+#include <stdio.h>
+
+int main() {
   int i;
   double A[5] = {
     9.0,
