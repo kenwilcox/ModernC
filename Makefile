@@ -1,11 +1,20 @@
-CC=gcc
+#CC=gcc
+CC=clang
 CFLAGS=-std=c99 -Wall
 
-getting_started.o: getting_started.c
+all: getting-started getting-started-badly
 
-getting_started: getting_started.o
-	$(CC) $(CFLAGS) -o getting_started getting_started.o
+getting-started: getting-started.o
+	$(CC) $(CFLAGS) -o getting-started getting-started.o
+
+getting-started-badly: getting-started-badly.o
+	$(CC) $(CFLAGS) -o getting-started-badly getting-started-badly.o
+
+getting-started.o: getting-started.c
+
+getting-started-badly.o: getting-started-badly.c
 
 clean:
-	-rm -f getting_started.o
-	-rm -f getting_started
+	-rm -f getting-started.o getting-started
+	-rm -f getting-started-badly.o getting-started-badly
+
