@@ -1,4 +1,3 @@
-//#include <unistd.h>
 void* syscall5 (
 	void* number,
 	void* arg1,
@@ -27,7 +26,7 @@ intptr write(int fd, void const* data, uintptr nbytes)
 
 int main(int argc, char* argv[])
 {
-	write(1, "hello\n", 6);
+	write(1, "hello world!\n", 13);
 
 	return 0;
 }
