@@ -8,7 +8,7 @@ if [ -e $archname/flags.sh ]; then
     . $archname/flags.sh
 fi
 
-gcc -std=c89 -pedantic -s -O2 -Wall -Werror \
+clang -std=c89 -pedantic -s -O2 -Wall -Werror \
     -nostdlib \
     -fno-unwind-tables \
     -fno-asynchronous-unwind-tables \
