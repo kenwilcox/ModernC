@@ -1,8 +1,8 @@
-#include <stdio.h>
+#include <unistd.h>
 
 int main(int argc, char* argv[])
 {
-	printf("hello\n");
+	write(1, "hello\n", 6);
 
 	return 0;
 }

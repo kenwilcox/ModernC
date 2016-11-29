@@ -1,6 +1,6 @@
 #CC=gcc
 CC=clang
-CFLAGS=-std=c99 -Wall
+CFLAGS=-std=c99 -Werror
 
 all: getting-started getting-started-badly
 
