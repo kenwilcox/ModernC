@@ -1,32 +1,48 @@
-void* syscall5 (
-	void* number,
-	void* arg1,
-	void* arg2,
-	void* arg3,
-	void* arg4,
-	void* arg5
-);
+#include "syscalls.h"
 
 typedef unsigned long int uintptr; /* size_t */
 typedef long int intptr; /* size_t */
 
-static
+#define internal static
+
+void* syscall3 (
+	uintptr number,
+	void* arg1,
+	void* arg2,
+	void* arg3
+);
+
+#define stdout 1
+
+internal
 intptr write(int fd, void const* data, uintptr nbytes)
 {
 	return (intptr)
-		syscall5(
-			(void*)1, /* SYS_write */
+		syscall3(
+			SYS_write,
 			(void*)(intptr)fd,
 			(void*)data,
-			(void*)nbytes,
-			0, /* ignored */
-			0  /* ignored */
+			(void*)nbytes
 		);
 }
 
-int main(int argc, char* argv[])
+internal
+uintptr strlen(char const* str)
 {
-	write(1, "hello world!\n", 13);
+	char const* p;
+	for(p = str; *p; ++p);
+	return p - str;
+}
+
+internal
+uintptr puts(char const* str)
+{
+	return write(stdout, str, strlen(str));
+}
+
+int main(int argc, char const* argv[])
+{
+	puts("hello world!\n");
 
 	return 0;
 }
